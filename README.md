@@ -99,3 +99,6 @@
 </p>
 
 ---
+<p align="center">
+  <img src="https://raw.githubusercontent.com/opsec24/opsec24/refs/heads/main/quote.svg" alt="Terminal style typing quote" width="700" />
+</p>
