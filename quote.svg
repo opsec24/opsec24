@@ -1,0 +1,146 @@
+<svg width="700" height="200" viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Terminal style typing quote">
+  <rect width="700" height="200" fill="black"></rect>
+  <style>
+    text {
+      font-family: 'Fira Code', monospace;
+      font-size: 22px;
+      fill: white;
+      white-space: pre;
+    }
+    .red {
+      fill: #ff3b3b;
+      font-weight: bold;
+    }
+    .line {
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+    /* Timing for each line fade in */
+    #line1 {
+      animation: fadeIn 2.5s ease forwards;
+      animation-delay: 0s;
+    }
+    #line2 {
+      animation: fadeIn 2.5s ease forwards;
+      animation-delay: 3s;
+    }
+    #line3 {
+      animation: fadeIn 2.5s ease forwards;
+      animation-delay: 6s;
+    }
+    #line4 {
+      animation: fadeIn 4s ease forwards;
+      animation-delay: 9s;
+    }
+    /* Typing effect */
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1 }
+    }
+    /* Line typing with clipping */
+    .typing1 {
+      animation: typing 2.5s steps(32) forwards;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid white;
+    }
+    .typing2 {
+      animation: typing 2.5s steps(30) forwards;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid white;
+    }
+    .typing3 {
+      animation: typing 2.5s steps(34) forwards;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid white;
+    }
+    .typing4 {
+      animation: typing 4s steps(49) forwards;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid white;
+    }
+    /* Blink cursor */
+    .typing1, .typing2, .typing3, .typing4 {
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+    .cursor {
+      animation: blink 1s steps(1) infinite;
+      fill: white;
+    }
+    @keyframes blink {
+      50% { opacity: 0 }
+    }
+  </style>
+
+  <!-- Lines -->
+
+  <text id="line1" class="line" x="15" y="40">
+    <tspan class="typing1">"It's Impossible." said Pride.</tspan><tspan class="cursor">|</tspan>
+  </text>
+
+  <text id="line2" class="line" x="15" y="75" opacity="0">
+    <tspan class="typing2">"It's Risky." said Experience.</tspan><tspan class="cursor">|</tspan>
+  </text>
+
+  <text id="line3" class="line" x="15" y="110" opacity="0">
+    <tspan class="typing3">"It's Pointless." said Reason.</tspan><tspan class="cursor">|</tspan>
+  </text>
+
+  <text id="line4" class="line" x="15" y="150" opacity="0">
+    If you really are a <tspan class="red">Hacker!</tspan> then <tspan class="red">Give it a Try!</tspan><tspan class="cursor">|</tspan>
+  </text>
+
+  <script type="application/ecmascript">
+    // Animation control to show lines one by one and clear to repeat
+
+    const lines = [
+      document.getElementById('line1'),
+      document.getElementById('line2'),
+      document.getElementById('line3'),
+      document.getElementById('line4')
+    ];
+
+    function reset() {
+      lines.forEach(line =&gt; {
+        line.style.opacity = '0';
+        line.querySelector('tspan').style.width = '0';
+      });
+    }
+
+    function showLine(line, typingClass, duration) {
+      return new Promise(resolve =&gt; {
+        line.style.opacity = '1';
+        const tspan = line.querySelector('tspan');
+        tspan.style.width = '0';
+        tspan.classList.add(typingClass);
+        setTimeout(() =&gt; {
+          tspan.classList.remove(typingClass);
+          resolve();
+        }, duration);
+      });
+    }
+
+    async function animate() {
+      while (true) {
+        reset();
+        await showLine(lines[0], 'typing1', 2500);
+        await showLine(lines[1], 'typing2', 2500);
+        await showLine(lines[2], 'typing3', 2500);
+        await showLine(lines[3], 'typing4', 4000);
+        // Wait before clear
+        await new Promise(r =&gt; setTimeout(r, 2000));
+        reset();
+        await new Promise(r =&gt; setTimeout(r, 1000));
+      }
+    }
+
+    animate();
+  </script>
+</svg>
