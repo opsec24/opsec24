@@ -25,7 +25,7 @@
   - Internal & External Infra
   - Active Directory Attacks
   - AWS Cloud Security
-- 💻 Python • FastAPI • MERN stack
+- 💻 Python • FastAPI • 
 - 🚀 Currently exploring **Cloud & AI Security vectors**
 
 ---
