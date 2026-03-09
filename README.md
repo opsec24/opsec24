@@ -20,7 +20,7 @@
 
 - 🎭 Name: **opsec24**
 - 🕵️‍♂️ Penetration Tester | AppSec Engineer | Cloud & AI Security Explorer
-- 🛡️ 7.5+ years of hands-on experience across:
+- 🛡️ 8+ years of hands-on experience across:
   - Web App Pentesting
   - Internal & External Infra
   - Active Directory Attacks
